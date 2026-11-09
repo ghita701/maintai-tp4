@@ -1,0 +1,52 @@
+
+# TP4 MaintAI - Configuration du package Python
+
+# Configuration de la construction
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+# Informations du package
+[project]
+name = "maintai"
+dynamic = ["version"]
+description = "Prédiction de pannes industrielles à partir de données de capteurs"
+readme = "README.md"
+requires-python = ">=3.11"
+
+# Dépendances nécessaires au fonctionnement
+dependencies = [
+    "numpy>=2.2",
+    "pandas>=2.2",
+    "scikit-learn>=1.6",
+    "joblib>=1.4",
+    "httpx>=0.28"
+]
+
+# Dépendances optionnelles
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30"
+]
+
+ui = [
+    "streamlit>=1.40"
+]
+
+dev = [
+    "pytest>=8",
+    "ruff"
+]
+
+# Commande accessible depuis le terminal
+[project.scripts]
+maintai-predict = "maintai.cli:main"
+
+# Récupération automatique de la version
+[tool.setuptools.dynamic]
+version = {attr = "maintai.__version__"}
+
+# Détection des packages Python
+[tool.setuptools.packages.find]
+include = ["maintai*"]
