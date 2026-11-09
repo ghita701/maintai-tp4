@@ -1,10 +1,10 @@
 .venv/
+.venv-test/
 __pycache__/
-*.pyc
 .pytest_cache/
-data/*.csv
-models/
-.env
-dist/
-build/
+.ruff_cache/
+*.pyc
 *.egg-info/
+build/
+dist/
+.env
